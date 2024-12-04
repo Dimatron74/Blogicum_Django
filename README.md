@@ -4,19 +4,17 @@
 ## Установка
 
 1. Установите Python (если он еще не установлен) - https://www.python.org/
-2. Установите pip - https://pip.pypa.io/en/stable/installing/
-3. Установите virtualenv - https://pypi.python.org/pypi/virtualenv
-4. Создайте виртуальное окружение, активируйте его, а затем установите зависимости:
-    - `virtualenv blogicum-env`
-    - `source blogicum-env/bin/activate` (либо `blogicum-env\Scripts\activate` на Windows)
+2. Создайте виртуальное окружение, активируйте его, а затем установите зависимости:
+    - `py -m venv .venv`
+    - `source blogicum-env/bin/activate` (либо `.venv\Scripts\Activate.ps1` на Windows)
     - `pip install -r requirements.txt`
-5. Создайте settings.py, основанный на settings.py.template
-6. Создайте базу данных и сделайте миграцию:
+3. Создайте базу данных и сделайте миграцию (если не желаете использовать уже существующую db.sqlite3):
+    - `cd blogicum`
     - `python manage.py makemigrations`
     - `python manage.py migrate`
-7. Загрузите данные:
+4. Загрузите данные (тестовые, либо свои):
     - `python manage.py loaddata db.json`
-8. Создайте администратора:
+5. Создайте суперпользователя:
     - `python manage.py createsuperuser`
 
 ## Запуск
@@ -27,5 +25,5 @@
 ## Использование
 
 1. Откройте веб-браузер и перейдите по адресу http://localhost:8000/
-2. Войдите под администратором
+2. Войдите под созданным суперпользователем на http://localhost:8000/admin/
 
