@@ -9,12 +9,13 @@
     - `source blogicum-env/bin/activate` (либо `.venv\Scripts\Activate.ps1` на Windows)
     - `pip install -r requirements.txt`
 3. Создайте базу данных и сделайте миграцию (если не желаете использовать уже существующую db.sqlite3):
-    - `cd blogicum`
-    - `python manage.py makemigrations`
-    - `python manage.py migrate`
-4. Загрузите данные (тестовые, либо свои):
+   ```sh
+    cd blogicum
+    python manage.py makemigrations
+    python manage.py migrate
+5. Загрузите данные (тестовые, либо свои):
     - `python manage.py loaddata db.json`
-5. Создайте суперпользователя:
+6. Создайте суперпользователя:
     - `python manage.py createsuperuser`
 
 ## Запуск
@@ -26,4 +27,3 @@
 
 1. Откройте веб-браузер и перейдите по адресу http://localhost:8000/
 2. Войдите под созданным суперпользователем на http://localhost:8000/admin/
-
