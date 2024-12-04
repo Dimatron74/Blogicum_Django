@@ -1,2 +1,2 @@
-# Blogicum_Django
+# Blogicum
  Вебсайт "Блогикум" на Django
