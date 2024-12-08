@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from blog.models import Post, Category
 from django.shortcuts import render, redirect
-from .forms import PostForm
+from .forms import PostForm, PostEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegistrationForm
@@ -96,3 +96,27 @@ def add_post(request):
     else:
         form = PostForm()
     return render(request, 'blog/add_post.html', {'form': form})
+
+@login_required
+def post_edit(request, id):
+    post = get_object_or_404(Post, id=id)
+    if post.author != request.user:
+        return redirect('blog:index')
+    if request.method == 'POST':
+        form = PostEditForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('blog:post_detail', id=id)
+    else:
+        form = PostEditForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+@login_required
+def post_delete(request, id):
+    post = get_object_or_404(Post, id=id)
+    if post.author != request.user:
+        return redirect('blog:index')
+    if request.method == 'POST':
+        post.delete()
+        return redirect('blog:index')
+    return redirect('blog:index')

@@ -13,6 +13,8 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('registration/', views.registration_view, name='registration'),
     path('logout/', views.logout_view, name='logout'),
+    path('post/<int:id>/edit/', views.post_edit, name='post_edit'),
+    path('post/<int:id>/delete/', views.post_delete, name='post_delete'),
 ]
 
 if settings.DEBUG:

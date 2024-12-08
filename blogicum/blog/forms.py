@@ -36,4 +36,9 @@ class PostForm(forms.ModelForm):
             instance.save()
         return instance
     
+class PostEditForm(PostForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'text', 'image', 'category', 'location')
+    
 
