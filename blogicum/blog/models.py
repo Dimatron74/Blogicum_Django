@@ -53,3 +53,17 @@ class Post (BaseModel):
             self.image.delete(save=False)
             self.image = None
             self.save()
+    
+    def clean(self):
+        if not self.title:
+            raise ValidationError('Заголовок не может быть пустым')
+        if not self.text:
+            raise ValidationError('Текст не может быть пустым')
+        if not self.category:
+            raise ValidationError('Категория не может быть пустой')
+        if not self.location:
+            raise ValidationError('Местоположение не может быть пустым')
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
