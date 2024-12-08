@@ -88,7 +88,7 @@ def logout_view(request):
 @login_required
 def add_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES, user=request.user)
         form.request = request
         if form.is_valid():
             form.save()

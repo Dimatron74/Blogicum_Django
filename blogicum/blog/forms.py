@@ -20,16 +20,17 @@ class RegistrationForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text', 'category', 'location', 'image', "author", 'pub_date')
+        fields = ('title', 'text', 'category', 'location', 'image')
 
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-        self.fields['author'].widget = forms.HiddenInput()
-        self.fields['pub_date'].widget = forms.HiddenInput()
 
     def save(self, commit=True):
         instance = super().save(commit=False)
-        instance.author = self.request.user
+        print(self.user)
+        if self.user:
+            instance.author = self.user
         instance.pub_date = timezone.now()
         if commit:
             instance.save()
