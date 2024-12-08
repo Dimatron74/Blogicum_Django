@@ -6,7 +6,7 @@
 1. Установите Python (если он еще не установлен) - https://www.python.org/
 2. Создайте виртуальное окружение, активируйте его, а затем установите зависимости:
     - `py -m venv .venv`
-    - `source blogicum-env/bin/activate` (либо `.venv\Scripts\Activate.ps1` на Windows)
+    - `source .venv/bin/activate` (либо `.venv\Scripts\Activate.ps1` на Windows)
     - `pip install -r requirements.txt`
 3. Создайте базу данных и сделайте миграцию (если не желаете использовать уже существующую db.sqlite3):
    ```sh
