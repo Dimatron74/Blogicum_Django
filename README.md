@@ -8,7 +8,7 @@
     - `py -m venv .venv`
     - `source .venv/bin/activate` (либо `.venv\Scripts\Activate.ps1` на Windows)
     - `pip install -r requirements.txt`
-3. Создайте базу данных и сделайте миграцию (если не желаете использовать уже существующую db.sqlite3):
+3. Настройте базу данных в settings.py (если не желаете использовать стандартный sqlite3) и сделайте миграцию:
    ```sh
     cd blogicum
     python manage.py makemigrations
